@@ -1,6 +1,7 @@
 'use strict'
 
 import { app, BrowserWindow } from 'electron'
+const windowStateKeeper = require('electron-window-state')
 
 /**
  * Set `__static` path to static files in production
@@ -17,12 +18,26 @@ const winURL = process.env.NODE_ENV === 'development'
 
 function createWindow () {
   /**
+   * Win state keeper
+   */
+  let state = windowStateKeeper({
+    defaultWidth: 500, defaultHeight: 650
+  })
+
+  /**
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
     useContentSize: true,
-    width: 1000
+    x: state.x,
+    y: state.y,
+    width: state.width,
+    height: state.height,
+    minWidth: 350,
+    minHeight: 300,
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
 
   mainWindow.loadURL(winURL)
