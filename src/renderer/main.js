@@ -14,6 +14,10 @@ if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
+const DefaultLayout = () => import('./layouts/default-layout')
+Vue.component('default-layout', DefaultLayout)
+Vue.config.productionTip = false
+
 /* eslint-disable no-new */
 new Vue({
   components: { App },

@@ -1,11 +1,13 @@
 <template>
-  <default-layout>
+  <div>
     <list :data="data" />
-  </default-layout>
+  </div>
 </template>
 
 <script>
 import List from '../components/List'
+import store from '../store/index'
+store.dispatch('SET_TITLE', 'System Infomation')
 export default {
   components: {
     List

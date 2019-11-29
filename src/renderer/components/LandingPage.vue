@@ -76,7 +76,9 @@
           </div>
           <!-- END Installation Form -->
           <systemz-information></systemz-information>
-
+          <!--<cpu-information></cpu-information>-->
+          <h1>Data</h1>
+          <pre>{{ data}}</pre>
         </div>
       </div>
     </div>
@@ -88,7 +90,8 @@
 <script>
   import SystemzInformation from './LandingPage/SystemInformation'
   import CpuInformation from '../pages/cpu'
-
+  import store from '../store/index'
+  store.dispatch('SET_TITLE', 'System Infomation')
   export default {
     name: 'landing-page',
     components: { SystemzInformation, CpuInformation },
@@ -111,9 +114,44 @@
         try {
           return [
             {
-              name: 'Is Charging',
-              value: this.$store.state.data.battery.ischarging,
-              img: `static/battery/ischarging.svg`
+              name: 'Brand',
+              value: this.$store.state.data.cpu.brand,
+              img: `static/cpu/cpu.svg`
+            },
+            {
+              name: 'Cores',
+              value: this.$store.state.data.cpu.cores,
+              img: `static/cpu/core.svg`
+            },
+            {
+              name: 'Manufacturer',
+              value: this.$store.state.data.cpu.manufacturer,
+              img: `static/cpu/manufacturer.svg`
+            },
+            {
+              name: 'Model',
+              value: this.$store.state.data.cpu.model,
+              img: `static/cpu/model.svg`
+            },
+            {
+              name: 'Revision',
+              value: this.$store.state.data.cpu.revision,
+              img: `static/cpu/revision.svg`
+            },
+            {
+              name: 'Speed',
+              value: this.$store.state.data.cpu.speed,
+              img: `static/cpu/speed.svg`
+            },
+            {
+              name: 'Speed Min',
+              value: this.$store.state.data.cpu.speedmin,
+              img: `static/cpu/speedmin.svg`
+            },
+            {
+              name: 'Speed Max',
+              value: this.$store.state.data.cpu.speedmax,
+              img: `static/cpu/speedmax.svg`
             }
           ]
         } catch (e) {

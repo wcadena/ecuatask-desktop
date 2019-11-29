@@ -6,7 +6,16 @@
 
 <script>
   export default {
-    name: 'ecuatask-desktop'
+    name: 'ecuatask-desktop',
+    data () {
+      return {
+        isLoading: false
+      }
+    },
+    async created () {
+      await this.$store.dispatch('GET_DATA')
+      this.isLoading = true
+    }
   }
 </script>
 

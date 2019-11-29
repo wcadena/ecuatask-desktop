@@ -1,16 +1,23 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import si from 'systeminformation'
-
-import { createPersistedState, createSharedMutations } from 'vuex-electron'
-
-import modules from './modules'
 const { getCurrentWindow } = require('electron').remote
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules,
+  state: {
+    data: null,
+    title: 'System Information'
+  },
+  mutations: {
+    setData (state, data) {
+      state.data = data
+    },
+    setTitle (state, title) {
+      state.title = title
+    }
+  },
   actions: {
     async GET_DATA ({ commit }) {
       let data
@@ -25,9 +32,6 @@ export default new Vuex.Store({
       commit('setTitle', title)
     }
   },
-  plugins: [
-    createPersistedState(),
-    createSharedMutations()
-  ],
-  strict: process.env.NODE_ENV !== 'production'
+  strict:
+    process.env.NODE_ENV !== 'production'
 })
