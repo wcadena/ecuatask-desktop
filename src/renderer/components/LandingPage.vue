@@ -75,17 +75,11 @@
             </div>
           </div>
           <!-- END Installation Form -->
-
-          <div class="text-center">
-            <a class="btn btn-sm btn-dark" href="be_pages_generic_blank.html">
-              <i class="fa fa-arrow-left mr-1"></i> Go Back
-            </a>
-          </div>
           <system-information></system-information>
         </div>
       </div>
     </div>
-    
+
   </div>
 
 </template>

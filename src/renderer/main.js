@@ -7,6 +7,8 @@ import store from './store'
 
 // include all css files
 import './lib/VuelyCss'
+// require('./assets/js/app')
+// require('./assets/js/dashmix/app')
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = axios
