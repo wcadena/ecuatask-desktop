@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
+import Vuetify from 'vuetify'
 
 import App from './App'
 import router from './router'
@@ -17,6 +18,7 @@ Vue.config.productionTip = false
 const DefaultLayout = () => import('./layouts/default-layout')
 Vue.component('default-layout', DefaultLayout)
 Vue.config.productionTip = false
+Vue.use(Vuetify)
 
 /* eslint-disable no-new */
 new Vue({
