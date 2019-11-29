@@ -76,7 +76,7 @@
           </div>
           <!-- END Installation Form -->
           <systemz-information></systemz-information>
-          <!--<cpu-information></cpu-information>-->
+          <cpu-information></cpu-information>
           <h1>Data</h1>
           <pre>{{ data}}</pre>
         </div>
@@ -90,8 +90,6 @@
 <script>
   import SystemzInformation from './LandingPage/SystemInformation'
   import CpuInformation from '../pages/cpu'
-  import store from '../store/index'
-  store.dispatch('SET_TITLE', 'System Infomation')
   export default {
     name: 'landing-page',
     components: { SystemzInformation, CpuInformation },
