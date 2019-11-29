@@ -1,0 +1,8 @@
+openssl genrsa -des3 -out private.pem 2048
+openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+para checar 
+less public.pem
+#dato
+#https://rietta.com/blog/openssl-generating-rsa-key-from-command/
+less private.pem to verify that it starts with a -----BEGIN RSA PRIVATE KEY-----
+less public.pem to verify that it starts with a -----BEGIN PUBLIC KEY-----
