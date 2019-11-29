@@ -6,12 +6,12 @@
           <div class="text-center">
             <div class="mb-3">
               <a class="link-fx font-w700 font-size-h1" href="index.html">
-                <span class="text-white">Dash</span><span class="text-primary">mix</span>
+                <span class="text-white">Ecua</span><span class="text-primary">Task</span>
               </a>
-              <p class="text-uppercase font-w700 font-size-sm text-muted">Installation Mode</p>
+              <p class="text-uppercase font-w700 font-size-sm text-muted">Instalación</p>
             </div>
-            <h1 class="text-white font-w700 mt-5 mb-3">Get ready to install your app</h1>
-            <h2 class="h3 text-white-75 font-w400 text-muted mb-5">Don’t worry, it will take less than a 1 minute!</h2>
+            <h1 class="text-white font-w700 mt-5 mb-3">Estamos listos para la instalacón</h1>
+            <h2 class="h3 text-white-75 font-w400 text-muted mb-5">No te preocupes, esto tomara solo un minuto.</h2>
           </div>
 
           <!-- Installation form -->
@@ -23,33 +23,17 @@
                 <div class="block block-rounded block-transparent bg-white">
                   <!-- Database section -->
                   <div class="block-content block-content-full">
-                    <h2 class="content-heading">Database</h2>
+                    <h2 class="content-heading">Usuario</h2>
                     <div class="row items-push">
                       <div class="col-lg-4">
                         <p class="text-muted">
-                          Please pay extra attention because adding the correct database info is vital for a successful app installation.
+                          Registre el nombre de usuario del equipo.
                         </p>
                       </div>
                       <div class="col-lg-6 offset-lg-1">
                         <div class="form-group">
-                          <label for="install-db-name">Name</label>
-                          <input type="text" class="form-control form-control-alt" id="install-db-name" name="install-db-name" placeholder="What's the name of your database?">
-                        </div>
-                        <div class="form-group">
-                          <label for="install-db-host">Host</label>
-                          <input type="text" class="form-control form-control-alt" id="install-db-host" name="install-db-host" placeholder="Leave empty for 'localhost'">
-                        </div>
-                        <div class="form-group">
-                          <label for="install-db-prefix">Table Prefix</label>
-                          <input type="text" class="form-control form-control-alt" id="install-db-prefix" name="install-db-prefix" placeholder="Leave empty for 'app_'">
-                        </div>
-                        <div class="form-group">
-                          <label for="install-db-username">Username</label>
+                          <label for="install-db-username">Usuario</label>
                           <input type="text" class="form-control form-control-alt" id="install-db-username" name="install-db-username" placeholder="Database username">
-                        </div>
-                        <div class="form-group">
-                          <label for="install-db-password">Password</label>
-                          <input type="password" class="form-control form-control-alt" id="install-db-password" name="install-db-password" placeholder="Database password">
                         </div>
                       </div>
                     </div>
@@ -58,31 +42,22 @@
 
                   <!-- Administrator section -->
                   <div class="block-content block-content-full">
-                    <h2 class="content-heading">Administrator</h2>
+                    <h2 class="content-heading">Equipo</h2>
                     <div class="row items-push">
                       <div class="col-lg-4">
                         <p class="text-muted">
-                          Please add your email and a strong password to create the administrator account.
+                          Registre el nombre del equipo como esta en el sistema.
                         </p>
                       </div>
                       <div class="col-lg-6 offset-lg-1">
                         <div class="form-group">
-                          <label for="install-admin-email">Email</label>
+                          <label for="install-admin-email">Equipo</label>
                           <input type="text" class="form-control form-control-alt" id="install-admin-email" name="install-admin-email">
-                        </div>
-                        <div class="form-group">
-                          <label for="install-admin-password">Password</label>
-                          <input type="password" class="form-control form-control-alt" id="install-admin-password" name="install-admin-password">
-                        </div>
-                        <div class="form-group">
-                          <label for="install-admin-password-confirm">Password Confirmation</label>
-                          <input type="password" class="form-control form-control-alt" id="install-admin-password-confirm" name="install-admin-password-confirm">
                         </div>
                       </div>
                     </div>
                   </div>
                   <!-- END Administrator section -->
-
                   <div class="block-content">
                     <div class="form-group row">
                       <div class="col-lg-6 offset-lg-5">
@@ -110,7 +85,9 @@
         </div>
       </div>
     </div>
+    
   </div>
+
 </template>
 
 <script>
