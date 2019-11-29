@@ -1,6 +1,7 @@
 <template>
   <div>
     <list :data="data" />
+    <img id="logo2" src="~@/static/cpu/cpu.svg" alt="electron-vue" hidden >
   </div>
 </template>
 
@@ -18,42 +19,42 @@ export default {
           {
             name: 'Brand',
             value: this.$store.state.data.cpu.brand,
-            img: `static/cpu/cpu.svg`
+            img: `imgs/cpu--cpu.svg`
           },
           {
             name: 'Cores',
             value: this.$store.state.data.cpu.cores,
-            img: `static/cpu/core.svg`
+            img: `imgs/core--cpu.svg`
           },
           {
             name: 'Manufacturer',
             value: this.$store.state.data.cpu.manufacturer,
-            img: `static/cpu/manufacturer.svg`
+            img: `imgs/manufacturer--cpu.svg`
           },
           {
             name: 'Model',
             value: this.$store.state.data.cpu.model,
-            img: `static/cpu/model.svg`
+            img: `imgs/model--cpu.svg`
           },
           {
             name: 'Revision',
             value: this.$store.state.data.cpu.revision,
-            img: `static/cpu/revision.svg`
+            img: `imgs/revision--cpu.svg`
           },
           {
             name: 'Speed',
             value: this.$store.state.data.cpu.speed,
-            img: `static/cpu/speed.svg`
+            img: `imgs/speed--cpu.svg`
           },
           {
             name: 'Speed Min',
             value: this.$store.state.data.cpu.speedmin,
-            img: `static/cpu/speedmin.svg`
+            img: `imgs/speedmin--cpu.svg`
           },
           {
             name: 'Speed Max',
             value: this.$store.state.data.cpu.speedmax,
-            img: `static/cpu/speedmax.svg`
+            img: `imgs/speedmax--cpu.svg`
           }
         ]
       } catch (e) {
