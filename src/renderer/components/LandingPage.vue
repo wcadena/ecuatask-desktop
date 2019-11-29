@@ -75,7 +75,8 @@
             </div>
           </div>
           <!-- END Installation Form -->
-          <system-information></system-information>
+          <systemz-information></systemz-information>
+
         </div>
       </div>
     </div>
@@ -85,11 +86,12 @@
 </template>
 
 <script>
-  import SystemInformation from './LandingPage/SystemInformation'
+  import SystemzInformation from './LandingPage/SystemInformation'
+  import CpuInformation from '../pages/cpu'
 
   export default {
     name: 'landing-page',
-    components: { SystemInformation },
+    components: { SystemzInformation, CpuInformation },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
