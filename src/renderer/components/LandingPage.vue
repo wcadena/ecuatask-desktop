@@ -23,7 +23,7 @@
                 <div class="block block-rounded block-transparent bg-white">
                   <!-- Database section -->
                   <div class="block-content block-content-full">
-                    <h2 class="content-heading">Usuario</h2>
+                    <h2 class="content-heading">Usuario: {{usuarioxci}}</h2>
                     <div class="row items-push">
                       <div class="col-lg-4">
                         <p class="text-muted">
@@ -32,8 +32,8 @@
                       </div>
                       <div class="col-lg-6 offset-lg-1">
                         <div class="form-group">
-                          <label for="install-db-username">Usuario</label>
-                          <input type="text" class="form-control form-control-alt" id="install-db-username" name="install-db-username" placeholder="Database username">
+                          <label for="usuarioxc">Usuario</label>
+                          <input type="text" v-model="usuarioxci" class="form-control form-control-alt" id="iusuarioxc" name="usuarioxc" placeholder="Usuario de Computadora">
                         </div>
                       </div>
                     </div>
@@ -42,7 +42,7 @@
 
                   <!-- Administrator section -->
                   <div class="block-content block-content-full">
-                    <h2 class="content-heading">Equipo</h2>
+                    <h2 class="content-heading">Equipo :{{equipoxci}}</h2>
                     <div class="row items-push">
                       <div class="col-lg-4">
                         <p class="text-muted">
@@ -51,8 +51,8 @@
                       </div>
                       <div class="col-lg-6 offset-lg-1">
                         <div class="form-group">
-                          <label for="install-admin-email">Equipo</label>
-                          <input type="text" class="form-control form-control-alt" id="install-admin-email" name="install-admin-email">
+                          <label for="equipoxc">Equipo</label>
+                          <input type="text" v-model="equipoxci" class="form-control form-control-alt" id="equipoxc" name="equipoxc" >
                         </div>
                       </div>
                     </div>
@@ -93,6 +93,30 @@
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
+      }
+    },
+    computed: {
+      usuarioxci () {
+        return 'Usuario'
+      },
+      image () {
+        return '/assets/logo.png'
+      },
+      equipoxci () {
+        return 'Equipo'
+      },
+      data () {
+        try {
+          return [
+            {
+              name: 'Is Charging',
+              value: this.$store.state.data.battery.ischarging,
+              img: `static/battery/ischarging.svg`
+            }
+          ]
+        } catch (e) {
+          return []
+        }
       }
     }
   }
