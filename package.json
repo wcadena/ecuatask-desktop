@@ -16,11 +16,13 @@
     "pack": "npm run pack:main && npm run pack:renderer",
     "pack:main": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.main.config.js",
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
-    "postinstall": "npm run lint:fix"
+    "postinstall": "npm run lint:fix",
+    "win-cert": "node .electron-vue/build.js && electron-builder create-self-signed-cert -p ecuatask"
   },
   "build": {
     "productName": "ecuatask-desktop",
     "appId": "com.ecuatask.desktop",
+    "copyright": "Copyright 2019 Ecuatask.com",
     "directories": {
       "output": "build"
     },
@@ -46,7 +48,11 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/icon.ico",
+      "certificateFile": "private/ecuatask.pfx",
+      "certificatePassword": "",
+      "verifyUpdateCodeSignature": false,
+      "publisherName": "ecuatask"
     },
     "linux": {
       "icon": "build/icons"
