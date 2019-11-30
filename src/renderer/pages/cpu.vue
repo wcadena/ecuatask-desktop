@@ -1,7 +1,6 @@
 <template>
   <div>
     <list :data="data" />
-    <img id="logo2" src="~@/static/cpu/cpu.svg" alt="electron-vue" hidden >
   </div>
 </template>
 

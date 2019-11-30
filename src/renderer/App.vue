@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <div v-if="isLoading">
+      <router-view></router-view>
+    </div>
+    <div v-else>
+      Cargando
+    </div>
   </div>
 </template>
 
