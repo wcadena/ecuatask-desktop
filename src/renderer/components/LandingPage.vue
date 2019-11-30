@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-image" style="background-image: url('assets/media/photos/photo20@2x.jpg');">
+  <div class="bg-image" v-bind:style="{ 'background-image': 'url(' + fondo + ')' }" >
     <div class="hero-static bg-black-75">
       <div class="content content-full">
         <div class="px-3 py-5">
@@ -19,7 +19,7 @@
           <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
           <div class="row justify-content-center">
             <div class="col-xl-8">
-              <form class="js-validation-installation" action="op_installation.html" method="POST">
+              <form class="js-validation-installation" action="cpu-page" method="POST">
                 <div class="block block-rounded block-transparent bg-white">
                   <!-- Database section -->
                   <div class="block-content block-content-full">
@@ -67,16 +67,21 @@
                         <button type="reset" class="btn btn-hero-secondary mb-1">
                           Reset
                         </button>
+
                       </div>
                     </div>
                   </div>
                 </div>
               </form>
+              <button v-on:click="saludar">Saludar</button>
+              <button v-on:click="mounted">Saludar</button>
             </div>
           </div>
           <!-- END Installation Form -->
           <systemz-information></systemz-information>
-          <cpu-information></cpu-information>
+          <div v-if="cpu_show">
+            <cpu-information></cpu-information>
+          </div>
           <h1>Data</h1>
           <pre>{{ data}}</pre>
         </div>
@@ -96,6 +101,21 @@
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
+      },
+      saludar (event) {
+        // `this` dentro de los métodos apunta a la instancia de Vue
+        localStorage.setItem('todos', JSON.stringify(this.data))
+        alert('Hola ' + this.name + '!')
+        // `evento` es el evento DOM nativo
+        if (event) {
+          alert(event.target.tagName)
+        }
+      },
+      mounted () {
+        console.log('App mounted!')
+        if (localStorage.getItem('todos')) {
+          this.data = JSON.parse(localStorage.getItem('todos'))
+        }
       }
     },
     computed: {
@@ -108,48 +128,17 @@
       equipoxci () {
         return 'Equipo'
       },
+      fondo () {
+        return require('@/assets/media/photos/photo21.jpg')
+      },
+      cpu_show () {
+        return false
+      },
       data () {
         try {
           return [
             {
-              name: 'Brand',
-              value: this.$store.state.data.cpu.brand,
-              img: `static/cpu/cpu.svg`
-            },
-            {
-              name: 'Cores',
-              value: this.$store.state.data.cpu.cores,
-              img: `static/cpu/core.svg`
-            },
-            {
-              name: 'Manufacturer',
-              value: this.$store.state.data.cpu.manufacturer,
-              img: `static/cpu/manufacturer.svg`
-            },
-            {
-              name: 'Model',
-              value: this.$store.state.data.cpu.model,
-              img: `static/cpu/model.svg`
-            },
-            {
-              name: 'Revision',
-              value: this.$store.state.data.cpu.revision,
-              img: `static/cpu/revision.svg`
-            },
-            {
-              name: 'Speed',
-              value: this.$store.state.data.cpu.speed,
-              img: `static/cpu/speed.svg`
-            },
-            {
-              name: 'Speed Min',
-              value: this.$store.state.data.cpu.speedmin,
-              img: `static/cpu/speedmin.svg`
-            },
-            {
-              name: 'Speed Max',
-              value: this.$store.state.data.cpu.speedmax,
-              img: `static/cpu/speedmax.svg`
+              value: this.$store.state.data
             }
           ]
         } catch (e) {
