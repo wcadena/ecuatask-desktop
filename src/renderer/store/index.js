@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import si from 'systeminformation'
+import auth from './modules/auth'
 const { getCurrentWindow } = require('electron').remote
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: {
+    auth
+  },
   state: {
     data: null,
     title: 'System Information'
