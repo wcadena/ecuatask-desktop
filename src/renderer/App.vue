@@ -4,13 +4,15 @@
       <router-view></router-view>
     </div>
     <div v-else>
-      Cargando
+      <cargando></cargando>
     </div>
   </div>
 </template>
 
 <script>
+  import Cargando from './components/Cargando'
   export default {
+    components: {Cargando},
     name: 'ecuatask-desktop',
     data () {
       return {
