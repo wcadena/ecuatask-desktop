@@ -2,7 +2,7 @@ import axios from 'axios'
 import { AUTH_CONFIG } from './auth0-variables'
 import EventEmitter from 'eventemitter3'
 // import router from '../router'
-import { store } from '../store/store'
+import { store } from '../store/index'
 
 class AuthService {
   constructor () {

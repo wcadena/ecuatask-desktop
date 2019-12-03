@@ -6,10 +6,12 @@
 
 <script>
   import Instalacio from './Instalacio'
+  import AuthService from '../oauth/AuthService'
+  console.log('Hola mundo')
 
   export default {
     name: 'landing-page',
-    components: { Instalacio }
+    components: { Instalacio, AuthService }
   }
 </script>
 
