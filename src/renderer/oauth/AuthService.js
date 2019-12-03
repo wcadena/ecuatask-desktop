@@ -69,7 +69,7 @@ class AuthService {
   }
 
   setSession (authResult) {
-    store.dispatch('signInUserWithAuth0', authResult)
+    // store.dispatch('signInUserWithAuth0', authResult)
     localStorage.setItem('isUserSigninWithAuth0', true)
     // Set the time that the access token will expire at
     const expiresAt = JSON.stringify(

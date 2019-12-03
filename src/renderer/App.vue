@@ -17,8 +17,9 @@
 
   export default {
     mounted () {
-      if (login) {
+      if (login('PHGFJGUEY2F')) {
         console.log('cargalog')
+        console.log(login)
       }
       console.log('carga1')
     },
