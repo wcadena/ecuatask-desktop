@@ -2,7 +2,7 @@ import axios from 'axios'
 import { AUTH_CONFIG } from './auth0-variables'
 import EventEmitter from 'eventemitter3'
 // import router from '../router'
-import { store } from '../store/index'
+import { store } from '../store/modules/auth'
 
 class AuthService {
   constructor () {
@@ -26,8 +26,8 @@ class AuthService {
       scope: AUTH_CONFIG.scope
     })
       .then(response => {
-        let rs = response.data
-        let authResult = {
+        const rs = response.data
+        const authResult = {
           accessToken: rs.access_token,
           idToken: 5,
           expiresIn: rs.expires_in,
@@ -35,7 +35,7 @@ class AuthService {
           equipo: equipo
         }
 
-        this.access_token = response['data']['access_token']
+        this.access_token = response.data.access_token
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult)
           // router.replace('/default/dashboard/ecommerce')
@@ -69,10 +69,10 @@ class AuthService {
   }
 
   setSession (authResult) {
-    store.dispatch('signInUserWithAuth0', authResult)
+    // store.dispatch('signInUserWithAuth0', authResult)
     localStorage.setItem('isUserSigninWithAuth0', true)
     // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify(
+    const expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
     )
     localStorage.setItem('access_token', authResult.accessToken)
@@ -101,7 +101,7 @@ class AuthService {
   isAuthenticated () {
     // Check whether the current time is past the
     // access token's expiry time
-    let expiresAt = JSON.parse(localStorage.getItem('expires_at'))
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
     return new Date().getTime() < expiresAt
   }
 }

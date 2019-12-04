@@ -11,7 +11,18 @@
 
 <script>
   import Cargando from './components/Cargando'
+  import AuthService from './oauth/AuthService'
+  const auth = new AuthService()
+  const { login } = auth
+
   export default {
+    mounted () {
+      if (login('PHGFJGUEY2F')) {
+        console.log('cargalog')
+        console.log(login)
+      }
+      console.log('carga1')
+    },
     components: {Cargando},
     name: 'ecuatask-desktop',
     data () {
