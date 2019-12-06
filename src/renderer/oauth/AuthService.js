@@ -101,7 +101,7 @@ class AuthService {
   isAuthenticated () {
     // Check whether the current time is past the
     // access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
+    const expiresAt = JSON.parse(localStorage.getItem('expires_in'))
     return new Date().getTime() < expiresAt
   }
 }

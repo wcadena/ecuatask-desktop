@@ -79,11 +79,6 @@
                     </div>
                     <!-- END Installation Form -->
                     <systemz-information></systemz-information>
-                    <div v-if="cpu_show">
-                        <cpu-information></cpu-information>
-                    </div>
-                    <h1>Data</h1>
-                    <pre>{{ data}}</pre>
                 </div>
             </div>
         </div>
@@ -94,10 +89,10 @@
 
 <script>
   import SystemzInformation from './LandingPage/SystemInformation'
-  import CpuInformation from '../pages/cpu'
+
   export default {
     name: 'instalacio',
-    components: { SystemzInformation, CpuInformation },
+    components: { SystemzInformation },
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
@@ -130,20 +125,6 @@
       },
       fondo () {
         return require('@/assets/media/photos/photo21.jpg')
-      },
-      cpu_show () {
-        return false
-      },
-      data () {
-        try {
-          return [
-            {
-              value: this.$store.state.data
-            }
-          ]
-        } catch (e) {
-          return []
-        }
       }
     }
   }

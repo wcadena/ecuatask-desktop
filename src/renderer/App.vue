@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div v-if="isLoading">
-      <router-view></router-view>
+      <router-view  :auth="auth" :authenticated="authenticated"></router-view>
     </div>
     <div v-else>
       <cargando></cargando>
@@ -13,20 +13,28 @@
   import Cargando from './components/Cargando'
   import AuthService from './oauth/AuthService'
   const auth = new AuthService()
-  const { login } = auth
+  const { login, authenticated, authNotifier, isAuthenticated } = auth
 
   export default {
     mounted () {
-      if (login('PHGFJGUEY2F')) {
-        console.log('cargalog')
-        console.log(login)
+      if (!isAuthenticated) {
+        if (login('PHGFJGUEY2F')) {
+          console.log('cargalog')
+          console.log(login)
+        }
+      } else {
+        console.log('Ya esta logueado')
       }
-      console.log('carga1')
     },
     components: {Cargando},
     name: 'ecuatask-desktop',
     data () {
+      authNotifier.on('authChange', authState => {
+        this.authenticated = authState.authenticated
+      })
       return {
+        auth,
+        authenticated,
         isLoading: false
       }
     },
