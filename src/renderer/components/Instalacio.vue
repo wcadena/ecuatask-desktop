@@ -19,11 +19,11 @@
                     <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                     <div class="row justify-content-center">
                         <div class="col-xl-8">
-                            <form class="js-validation-installation" action="cpu-page" method="POST">
+                            <form class="js-validation-installation" action="#" method="POST">
                                 <div class="block block-rounded block-transparent bg-white">
                                     <!-- Database section -->
                                     <div class="block-content block-content-full">
-                                        <h2 class="content-heading">Usuario: {{usuarioxci}}</h2>
+                                        <h2 class="content-heading">Usuario</h2>
                                         <div class="row items-push">
                                             <div class="col-lg-4">
                                                 <p class="text-muted">
@@ -32,8 +32,8 @@
                                             </div>
                                             <div class="col-lg-6 offset-lg-1">
                                                 <div class="form-group">
-                                                    <label for="usuarioxc">Usuario</label>
-                                                    <input type="text" v-model="usuarioxci" class="form-control form-control-alt" id="iusuarioxc" name="usuarioxc" placeholder="Usuario de Computadora">
+                                                    <label for="iusuarioxc">Usuario</label>
+                                                    <input type="text" v-model="usuarioxci1" class="form-control form-control-alt" id="iusuarioxc" name="usuarioxc" placeholder="Usuario de Computadora">
                                                 </div>
                                             </div>
                                         </div>
@@ -42,7 +42,7 @@
 
                                     <!-- Administrator section -->
                                     <div class="block-content block-content-full">
-                                        <h2 class="content-heading">Equipo :{{equipoxci}}</h2>
+                                        <h2 class="content-heading">Equipo</h2>
                                         <div class="row items-push">
                                             <div class="col-lg-4">
                                                 <p class="text-muted">
@@ -52,7 +52,7 @@
                                             <div class="col-lg-6 offset-lg-1">
                                                 <div class="form-group">
                                                     <label for="equipoxc">Equipo</label>
-                                                    <input type="text" v-model="equipoxci" class="form-control form-control-alt" id="equipoxc" name="equipoxc" >
+                                                    <input type="text" v-model="equipoxci1" class="form-control form-control-alt" id="equipoxc" name="equipoxc" >
                                                 </div>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@
                                     <div class="block-content">
                                         <div class="form-group row">
                                             <div class="col-lg-6 offset-lg-5">
-                                                <button type="submit" class="btn btn-hero-success mb-1">
+                                                <button type="button" v-on:click="guardarenhd" class="btn btn-hero-success mb-1">
                                                     <i class="fa fa-check mr-1"></i> Install
                                                 </button>
                                                 <button type="reset" class="btn btn-hero-secondary mb-1">
@@ -73,8 +73,6 @@
                                     </div>
                                 </div>
                             </form>
-                            <button v-on:click="saludar">Saludar</button>
-                            <button v-on:click="mounted">Saludar</button>
                         </div>
                     </div>
                     <!-- END Installation Form -->
@@ -82,49 +80,71 @@
                 </div>
             </div>
         </div>
-
+        <!--<pre>{{ data}}</pre>
+        <pre>{{ usert[0].usuario}}</pre>-->
     </div>
 
 </template>
 
 <script>
   import SystemzInformation from './LandingPage/SystemInformation'
-
+  import AuthService from '../oauth/AuthService'
   export default {
     name: 'instalacio',
     components: { SystemzInformation },
     methods: {
-      open (link) {
-        this.$electron.shell.openExternal(link)
-      },
-      saludar (event) {
-        // `this` dentro de los métodos apunta a la instancia de Vue
-        localStorage.setItem('todos', JSON.stringify(this.data))
-        alert('Hola ' + this.name + '!')
-        // `evento` es el evento DOM nativo
-        if (event) {
-          alert(event.target.tagName)
-        }
-      },
-      mounted () {
-        console.log('App mounted!')
-        if (localStorage.getItem('todos')) {
-          this.data = JSON.parse(localStorage.getItem('todos'))
-        }
+      guardarenhd (event) {
+        const auth = new AuthService()
+        console.log(this.usuarioxci1)
+        auth.login(this.equipoxci1)
+      }
+    },
+    mounted () {
+      this.usuarioxci1 = this.usuarioxci
+      this.equipoxci1 = this.equipoxci
+    },
+    data () {
+      return {
+        usuarioxci1: this.usuarioxci,
+        equipoxci1: this.equipoxci
       }
     },
     computed: {
       usuarioxci () {
-        return 'Usuario'
+        return this.usert[0].usuario
       },
       image () {
         return '/assets/logo.png'
       },
       equipoxci () {
-        return 'Equipo'
+        return this.usert[0].equipo
       },
       fondo () {
         return require('@/assets/media/photos/photo21.jpg')
+      },
+      data () {
+        try {
+          return [
+            {
+              value: this.$store.state.data
+            }
+          ]
+        } catch (e) {
+          return []
+        }
+      },
+      usert () {
+        try {
+          return [
+            {
+              usuarios: this.$store.state.data.users,
+              usuario: this.$store.state.data.users[0].user,
+              equipo: this.$store.state.data.os.hostname
+            }
+          ]
+        } catch (e) {
+          return []
+        }
       }
     }
   }
