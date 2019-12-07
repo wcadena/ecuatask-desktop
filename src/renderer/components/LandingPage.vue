@@ -21,14 +21,17 @@
     <div v-if="!os_show">
       <os-information></os-information>
     </div>
-    <div v-if="system_show">
+    <div v-if="!system_show">
       <system-information></system-information>
+    </div>
+    <div v-if="program_show">
+      <program-information></program-information>
     </div>
     <div v-if="false">
       <h1>Data</h1>
       <pre>{{ data}}</pre>
+      <pre>{{program}}</pre>
     </div>
-    <pre>{{program}}</pre>
   </div>
 </template>
 
@@ -41,6 +44,7 @@
   import NetworkInformation from '../pages/network'
   import OsInformation from '../pages/os'
   import SystemInformation from '../pages/system'
+  import ProgramInformation from '../pages/programas'
   import AuthService from '../oauth/AuthService'
 
   export default {
@@ -74,6 +78,9 @@
         },
         system_show () {
           return false
+        },
+        program_show () {
+          return false
         }
       }
     },
@@ -102,7 +109,7 @@
       }
     },
     name: 'landing-page',
-    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation, GraphicsInformation, NetworkInformation, OsInformation, SystemInformation }
+    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation, GraphicsInformation, NetworkInformation, OsInformation, SystemInformation, ProgramInformation }
   }
 </script>
 
