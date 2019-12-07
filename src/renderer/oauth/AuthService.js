@@ -13,8 +13,26 @@ class AuthService {
     this.authenticated = this.isAuthenticated()
     this.authNotifier = new EventEmitter()
   }
-
-  login (equipo) {
+  getequiponumeroserie (equipo) {
+    // const accessToken = JSON.parse(localStorage.getItem('access_token'))
+    let urll = AUTH_CONFIG.apibase + '/api/equipo_no_serie' + '?no_serie=' + equipo
+    console.log(urll)
+    axios.get(urll,
+      {
+        headers: {
+          Authorization: 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY0MGM3YzgwNzdmMWVhMzI1NDI1MzA5YmFjNmQ2M2ZlMzdkOWJjNmYxZDdiNTYzNmRkNzgzNGU3NDM4ODg0NmU0NDgyNmEyYmQ1NjU3ZDYwIn0.eyJhdWQiOiI4IiwianRpIjoiNjQwYzdjODA3N2YxZWEzMjU0MjUzMDliYWM2ZDYzZmUzN2Q5YmM2ZjFkN2I1NjM2ZGQ3ODM0ZTc0Mzg4ODQ2ZTQ0ODI2YTJiZDU2NTdkNjAiLCJpYXQiOjE1NzU2MDM3NTUsIm5iZiI6MTU3NTYwMzc1NSwiZXhwIjoxNTg4NTYzNzU1LCJzdWIiOiIyMyIsInNjb3BlcyI6WyIqIl19.M5hkLkrE4tXj2LxCcgPiRqowaqIFzGtC5xEYcB-7DUMo5EBqJr98NMyUEat_qgaWW0L2HmCkHSrO8nf3gamOoFrE35chWyc_xFUm7bo3e2lRCuAupP0LVRtQHoe2r5mYo2YlXeMStAs3i2RshOoCDLyu7EdCRo-oKtpzwya9K4tO2V56kJcw5qb6OCz6HBydNNiREEBGUDQ3qk7Xa61oa7KO9MPJvXDc8yseE1VsBJtsVtZSJfQwnexJDk-peeAzdUaKxZGgJPBSki-0ll-U-y4nwrntLPCMvV2yw1f_pA2_c7TIJusM-zpej07HbIduVpDNE94Wk-WUc5iOSsrTkCqoiCSvR0wvpSQ0eNpOxLxMpHruaytDs14pl28GCqsnbhaEazej6EAz3-3uMa8QryM2JkVuBFPJE8oUWXI2Mptvf1CHe6yWXHVIdy3Gem-la6FP-ieWy6I2L590XnTBvHDMfCNVhIWC3Vts5sdEVhSozOb5w-SaLBGz3V6fD4hY2dZln0Le9ThV8v25aVQNXaXzUitT6LvrEu3liBBI5cgZKxj_rqMvw-tYSSSvT0ccMOQFTxsCd81MFlr8wMMGFki49vtyLici_3RJ6UqX_DepVCEFx1gAFF4h40YrfGo895xxdexs3IDU6l48yvs5B-baqMfpN6rqfH9MiOefq4Q'
+        }
+      }
+    )
+      .then(resp => resp.data)
+      .then(response => {
+        localStorage.setItem('equipo_data', JSON.stringify(response))
+        return response
+      }).catch(e => {
+        return false
+      })
+  }
+  login () {
     // https://github.com/wcadena/inventarioAppDesktopJava/blob/63f388fac1830563a51a0c2b2159378c064c273c/src/main/java/utils/ConectarRestfull.java
     axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
     axios.post(AUTH_CONFIG.domain, {
@@ -31,14 +49,14 @@ class AuthService {
           accessToken: rs.access_token,
           idToken: 5,
           expiresIn: rs.expires_in,
-          refreshToken: rs.refresh_token,
-          equipo: equipo
+          refreshToken: rs.refresh_token
         }
 
         this.access_token = response.data.access_token
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult)
           // router.replace('/default/dashboard/ecommerce')
+          location.reload()
           return true
         }
       })

@@ -58,7 +58,7 @@
                                         </div>
                                     </div>
                                     <!-- END Administrator section -->
-                                    <div class="block-content">
+                                    <div class="block-content" >
                                         <div class="form-group row">
                                             <div class="col-lg-6 offset-lg-5">
                                                 <button type="button" v-on:click="guardarenhd" class="btn btn-hero-success mb-1">
@@ -67,7 +67,7 @@
                                                 <button type="reset" class="btn btn-hero-secondary mb-1">
                                                     Reset
                                                 </button>
-
+                                                <pre>{{dataInstalacion}}</pre>
                                             </div>
                                         </div>
                                     </div>
@@ -97,6 +97,12 @@
         const auth = new AuthService()
         console.log(this.usuarioxci1)
         auth.login(this.equipoxci1)
+        this.seinstaloOk = auth.getequiponumeroserie(this.equipoxci1)
+        console.log(this.dataInstalacion.length)
+        console.log(this.dataInstalacion)
+        if (this.dataInstalacion && this.dataInstalacion.length > 1) {
+          location.reload()
+        }
       }
     },
     mounted () {
@@ -106,10 +112,24 @@
     data () {
       return {
         usuarioxci1: this.usuarioxci,
-        equipoxci1: this.equipoxci
+        equipoxci1: this.equipoxci,
+        boton_activa: false
+      }
+    },
+    watch: {
+      boton_activa: function () {
+
       }
     },
     computed: {
+      seinstaloOk: {
+        get: function () {
+          return false
+        },
+        set: function (dato) {
+          return dato
+        }
+      },
       usuarioxci () {
         return this.usert[0].usuario
       },
@@ -131,6 +151,17 @@
           ]
         } catch (e) {
           return []
+        }
+      },
+      dataInstalacion () {
+        try {
+          return [
+            {
+              value: JSON.parse(localStorage.getItem('equipo_data'))
+            }
+          ]
+        } catch (e) {
+          return null
         }
       },
       usert () {
