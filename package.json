@@ -69,6 +69,7 @@
     "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",
     "popper.js": "^1.16.0",
+    "proglistr": "^1.4.0",
     "simplebar": "^5.0.7",
     "systeminformation": "^4.16.0",
     "vue": "^2.6.10",

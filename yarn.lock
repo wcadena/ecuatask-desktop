@@ -7886,6 +7886,11 @@ process@^0.11.10:
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
 
+proglistr@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/proglistr/-/proglistr-1.4.0.tgz#b27a27df85de1769a18f833af4e3f233185a9ead"
+  integrity sha512-sZso3kMq4A4GxU1lWBiw5jDsG2+UJRhfPK7BCagKAz5KUP45XG8M13z6EHbE80hjwqU2DnFs1VabGXk041CVwg==
+
 progress@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"

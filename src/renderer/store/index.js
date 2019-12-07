@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import si from 'systeminformation'
 import auth from './modules/auth'
+import progra from 'proglistr'
 const { getCurrentWindow } = require('electron').remote
 
 Vue.use(Vuex)
@@ -12,7 +13,8 @@ export default new Vuex.Store({
   },
   state: {
     data: null,
-    title: 'System Information'
+    title: 'System Information',
+    prrogra: null
   },
   mutations: {
     setData (state, data) {
@@ -20,17 +22,25 @@ export default new Vuex.Store({
     },
     setTitle (state, title) {
       state.title = title
+    },
+    setPrrogra (state, prrogra) {
+      state.prrogra = prrogra
     }
   },
   actions: {
     async GET_DATA ({ commit }) {
       let data
+      let prrogra
       try {
         data = await si.getAllData()
+        prrogra = await progra
+        prrogra.getProgs().then(data => data.forEach(program => { console.log(program) }))
+        console.log(prrogra.getProgs())
       } catch (e) {
         getCurrentWindow().reload()
       }
       commit('setData', data)
+      commit('setPrrogra', prrogra)
     },
     SET_TITLE ({ commit }, title) {
       commit('setTitle', title)
