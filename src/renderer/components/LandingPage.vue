@@ -12,8 +12,11 @@
     <div v-if="!disk_show">
       <disk-information></disk-information>
     </div>
-    <div v-if="graphics_show">
+    <div v-if="!graphics_show">
       <graphics-information></graphics-information>
+    </div>
+    <div v-if="network_show">
+      <network-information></network-information>
     </div>
     <div v-if="false">
       <h1>Data</h1>
@@ -28,6 +31,7 @@
   import BatteryInformation from '../pages/battery'
   import DiskInformation from '../pages/disk'
   import GraphicsInformation from '../pages/graphics'
+  import NetworkInformation from '../pages/network'
   import AuthService from '../oauth/AuthService'
 
   export default {
@@ -52,6 +56,9 @@
         },
         graphics_show () {
           return false
+        },
+        network_show () {
+          return false
         }
       }
     },
@@ -69,7 +76,7 @@
       }
     },
     name: 'landing-page',
-    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation, GraphicsInformation }
+    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation, GraphicsInformation, NetworkInformation }
   }
 </script>
 

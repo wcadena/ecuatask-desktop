@@ -1,7 +1,7 @@
 <template>
-  <default-layout>
+  <div>
     <list :data="data" />
-  </default-layout>
+  </div>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
   },
   computed: {
     data () {
-      let iface = this.$store.state.data.networkStats.iface
+      let iface = this.$store.state.data.networkStats[0].iface
       let net = this.$store.state.data.net.filter(
         data => data.iface === iface
       )[0]
@@ -20,22 +20,22 @@ export default {
         {
           name: 'Name',
           value: net.iface,
-          img: `static/network/name.svg`
+          img: require(`@/static/network/name.svg`)
         },
         {
           name: 'IP v4',
           value: net.ip4,
-          img: `static/network/ip4.svg`
+          img: require(`@/static/network/ip4.svg`)
         },
         {
           name: 'IP v6',
           value: net.ip6,
-          img: `static/network/ip6.svg`
+          img: require(`@/static/network/ip6.svg`)
         },
         {
           name: 'MAC',
           value: net.mac,
-          img: `static/network/mac.svg`
+          img: require(`@/static/network/mac.svg`)
         }
       ]
     }
