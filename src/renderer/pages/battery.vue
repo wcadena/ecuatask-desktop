@@ -1,13 +1,14 @@
 <template>
-  <default-layout>
+  <div>
     <list :data="data" />
-  </default-layout>
+  </div>
 </template>
 
 <script>
 import List from '../components/List'
 
 export default {
+  name: 'battery-page',
   components: {
     List
   },
@@ -18,22 +19,22 @@ export default {
           {
             name: 'Is Charging',
             value: this.$store.state.data.battery.ischarging,
-            img: `static/battery/ischarging.svg`
+            img: require('@/static/battery/ischarging.svg')
           },
           {
             name: 'Max Capacity',
             value: this.$store.state.data.battery.maxcapacity,
-            img: `static/battery/maxcapacity.svg`
+            img: require('@/static/battery/maxcapacity.svg')
           },
           {
             name: 'Current Capacity',
             value: this.$store.state.data.battery.currentcapacity,
-            img: `static/battery/currentcapacity.svg`
+            img: require('@/static/battery/currentcapacity.svg')
           },
           {
             name: 'Percent',
             value: this.$store.state.data.battery.percent,
-            img: `static/battery/percent.svg`
+            img: require('@/static/battery/percent.svg')
           }
         ]
       } catch (e) {
@@ -44,5 +45,3 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>

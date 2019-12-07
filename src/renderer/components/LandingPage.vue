@@ -3,17 +3,23 @@
     <instalacio></instalacio>
   </div>
   <div v-else>
-    <div v-if="cpu_show">
+    <div v-if="!cpu_show">
       <cpu-information></cpu-information>
     </div>
-    <h1>Data</h1>
-    <pre>{{ data}}</pre>
+    <div v-if="!battery_show">
+      <battery-information></battery-information>
+    </div>
+    <div v-if="false">
+      <h1>Data</h1>
+      <pre>{{ data}}</pre>
+    </div>
   </div>
 </template>
 
 <script>
   import Instalacio from './Instalacio'
   import CpuInformation from '../pages/cpu'
+  import BatteryInformation from '../pages/battery'
   import AuthService from '../oauth/AuthService'
 
   export default {
@@ -28,6 +34,9 @@
       return {
         isLogin: true,
         cpu_show () {
+          return false
+        },
+        battery_show () {
           return false
         }
       }
@@ -46,7 +55,7 @@
       }
     },
     name: 'landing-page',
-    components: { Instalacio, CpuInformation }
+    components: { Instalacio, CpuInformation, BatteryInformation }
   }
 </script>
 
