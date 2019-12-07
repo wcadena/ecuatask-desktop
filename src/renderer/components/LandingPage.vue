@@ -9,8 +9,11 @@
     <div v-if="!battery_show">
       <battery-information></battery-information>
     </div>
-    <div v-if="disk_show">
+    <div v-if="!disk_show">
       <disk-information></disk-information>
+    </div>
+    <div v-if="graphics_show">
+      <graphics-information></graphics-information>
     </div>
     <div v-if="false">
       <h1>Data</h1>
@@ -24,6 +27,7 @@
   import CpuInformation from '../pages/cpu'
   import BatteryInformation from '../pages/battery'
   import DiskInformation from '../pages/disk'
+  import GraphicsInformation from '../pages/graphics'
   import AuthService from '../oauth/AuthService'
 
   export default {
@@ -45,6 +49,9 @@
         },
         disk_show () {
           return false
+        },
+        graphics_show () {
+          return false
         }
       }
     },
@@ -62,7 +69,7 @@
       }
     },
     name: 'landing-page',
-    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation }
+    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation, GraphicsInformation }
   }
 </script>
 

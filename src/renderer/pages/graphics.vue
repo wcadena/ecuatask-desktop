@@ -1,20 +1,20 @@
 <template>
-  <default-layout>
-    <v-expansion-panel expand>
-      <v-expansion-panel-content v-for="(type, index, i) in controllers" :key="i">
-        <div slot="header">{{type.model}}</div>
-        <v-card>
+  <div>
+    <v-expansion-panels>
+      <v-expansion-panel v-for="(type, index, i) in controllers" :key="i">
+        <v-expansion-panel-header expand-icon="mdi-menu-down">{{type.model}}</v-expansion-panel-header>
+        <v-expansion-panel-content>
           <list :data="getController(index)" />
-        </v-card>
-      </v-expansion-panel-content>
-      <v-expansion-panel-content v-for="(type, index) in displays" :key="index">
-        <div slot="header">{{type.model}}</div>
-        <v-card>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+      <v-expansion-panel v-for="(type, index) in displays" :key="index">
+        <v-expansion-panel-header expand-icon="mdi-menu-down">{{type.model}}</v-expansion-panel-header>
+        <v-expansion-panel-content>
           <list :data="getDisplay(index)" />
-        </v-card>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </default-layout>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+  </div>
 </template>
 
 <script>
@@ -46,28 +46,28 @@ export default {
           {
             name: 'Model',
             value: this.$store.state.data.graphics.controllers[pos].model,
-            img: `static/graphics/controllers/model.svg`
+            img: require(`@/static/graphics/controllers/model.svg`)
           },
           {
             name: 'Vendor',
             value: this.$store.state.data.graphics.controllers[pos].vendor,
-            img: `static/graphics/controllers/vendor.svg`
+            img: require(`@/static/graphics/controllers/vendor.svg`)
           },
           {
             name: 'VRAM',
             value: this.$store.state.data.graphics.controllers[pos].vram,
-            img: `static/graphics/controllers/vram.svg`,
+            img: require(`@/static/graphics/controllers/vram.svg`),
             unit: 'MB'
           },
           {
             name: 'VRAM Dynamic',
             value: this.$store.state.data.graphics.controllers[pos].vramDynamic,
-            img: `static/graphics/controllers/vramdynamic.svg`
+            img: require(`@/static/graphics/controllers/vramdynamic.svg`)
           },
           {
             name: 'Bus',
             value: this.$store.state.data.graphics.controllers[pos].bus,
-            img: `static/graphics/controllers/bus.svg`
+            img: require(`@/static/graphics/controllers/bus.svg`)
           }
         ]
       } catch (e) {
@@ -81,27 +81,27 @@ export default {
           {
             name: 'Model',
             value: this.$store.state.data.graphics.displays[pos].model,
-            img: `static/graphics/displays/model.svg`
+            img: require(`@/static/graphics/displays/model.svg`)
           },
           {
             name: 'Main',
             value: this.$store.state.data.graphics.displays[pos].main,
-            img: `static/graphics/displays/main.svg`
+            img: require(`@/static/graphics/displays/main.svg`)
           },
           {
             name: 'Resolution X',
             value: this.$store.state.data.graphics.displays[pos].resolutionx,
-            img: `static/graphics/displays/resolutionx.svg`
+            img: require(`@/static/graphics/displays/resolutionx.svg`)
           },
           {
             name: 'Resolution Y',
             value: this.$store.state.data.graphics.displays[pos].resolutiony,
-            img: `static/graphics/displays/resolutiony.svg`
+            img: require(`@/static/graphics/displays/resolutiony.svg`)
           },
           {
             name: 'Pixel Depth',
             value: this.$store.state.data.graphics.displays[pos].pixeldepth,
-            img: `static/graphics/displays/pixeldepth.svg`
+            img: require(`@/static/graphics/displays/pixeldepth.svg`)
           }
         ]
       } catch (e) {
