@@ -21,10 +21,10 @@
     <div v-if="!os_show">
       <os-information></os-information>
     </div>
-    <div v-if="!system_show">
+    <div v-if="system_show">
       <system-information></system-information>
     </div>
-    <div v-if="program_show">
+    <div v-if="!program_show">
       <program-information></program-information>
     </div>
     <div v-if="false">
@@ -46,6 +46,7 @@
   import SystemInformation from '../pages/system'
   import ProgramInformation from '../pages/programas'
   import AuthService from '../oauth/AuthService'
+  require('../electron/menu')
 
   export default {
     mounted () {

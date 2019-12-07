@@ -27,3 +27,7 @@ new Vue({
   store,
   template: '<App/>'
 }).$mount('#app')
+
+window.newItem = () => {
+  console.log('Nuevo Item...')
+}
