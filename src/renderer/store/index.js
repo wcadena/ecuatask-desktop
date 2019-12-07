@@ -35,12 +35,13 @@ export default new Vuex.Store({
         data = await si.getAllData()
         prrogra = await progra
         prrogra.getProgs().then(data => data.forEach(program => { console.log(program) }))
-        console.log(prrogra.getProgs())
+        prrogra.getProgs().then(data => {
+          commit('setPrrogra', data)
+        })
       } catch (e) {
         getCurrentWindow().reload()
       }
       commit('setData', data)
-      commit('setPrrogra', prrogra)
     },
     SET_TITLE ({ commit }, title) {
       commit('setTitle', title)

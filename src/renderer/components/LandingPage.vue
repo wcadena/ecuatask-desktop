@@ -28,6 +28,7 @@
       <h1>Data</h1>
       <pre>{{ data}}</pre>
     </div>
+    <pre>{{program}}</pre>
   </div>
 </template>
 
@@ -82,6 +83,17 @@
           return [
             {
               value: this.$store.state.data
+            }
+          ]
+        } catch (e) {
+          return []
+        }
+      },
+      program () {
+        try {
+          return [
+            {
+              value: this.$store.state.prrogra
             }
           ]
         } catch (e) {
