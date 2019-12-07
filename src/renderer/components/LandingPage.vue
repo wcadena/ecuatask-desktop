@@ -18,8 +18,11 @@
     <div v-if="!network_show">
       <network-information></network-information>
     </div>
-    <div v-if="os_show">
+    <div v-if="!os_show">
       <os-information></os-information>
+    </div>
+    <div v-if="system_show">
+      <system-information></system-information>
     </div>
     <div v-if="false">
       <h1>Data</h1>
@@ -36,6 +39,7 @@
   import GraphicsInformation from '../pages/graphics'
   import NetworkInformation from '../pages/network'
   import OsInformation from '../pages/os'
+  import SystemInformation from '../pages/system'
   import AuthService from '../oauth/AuthService'
 
   export default {
@@ -66,6 +70,9 @@
         },
         os_show () {
           return false
+        },
+        system_show () {
+          return false
         }
       }
     },
@@ -83,7 +90,7 @@
       }
     },
     name: 'landing-page',
-    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation, GraphicsInformation, NetworkInformation, OsInformation }
+    components: { Instalacio, CpuInformation, BatteryInformation, DiskInformation, GraphicsInformation, NetworkInformation, OsInformation, SystemInformation }
   }
 </script>
 
