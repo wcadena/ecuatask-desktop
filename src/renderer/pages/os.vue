@@ -1,7 +1,7 @@
 <template>
-  <default-layout>
+  <div>
     <list :data="data" />
-  </default-layout>
+  </div>
 </template>
 
 <script>
@@ -16,27 +16,27 @@ export default {
         {
           name: 'Distro',
           value: this.$store.state.data.os.distro,
-          img: `static/os/platform/${this.$store.state.data.os.platform.toLowerCase()}.svg`
+          img: require(`@/static/os/platform/${this.$store.state.data.os.platform.toLowerCase()}.svg`)
         },
         {
           name: 'Arch',
           value: this.$store.state.data.os.arch,
-          img: `static/os/arch/${this.$store.state.data.os.arch}.svg`
+          img: require(`@/static/os/arch/${this.$store.state.data.os.arch}.svg`)
         },
         {
           name: 'Release',
           value: this.$store.state.data.os.release,
-          img: 'static/os/release.svg'
+          img: require(`@/static/os/release.svg`)
         },
         {
           name: 'Host Name',
           value: this.$store.state.data.os.hostname,
-          img: 'static/os/hostname.svg'
+          img: require(`@/static/os/hostname.svg`)
         },
         {
           name: 'Users',
           value: this.$store.state.data.os.users,
-          img: 'static/os/users.svg'
+          img: require(`@/static/os/users.svg`)
         }
       ]
     }
