@@ -6,7 +6,7 @@
     <v-row justify="center">
       <v-expansion-panels popout>
         <v-expansion-panel >
-          <v-expansion-panel-header>CPU</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down" >CPU</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="cpu_show">
               <cpu-information></cpu-information>
@@ -14,7 +14,7 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel >
-          <v-expansion-panel-header>Batería</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down" >Batería</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="battery_show">
               <battery-information></battery-information>
@@ -23,7 +23,7 @@
         </v-expansion-panel>
 
         <v-expansion-panel >
-          <v-expansion-panel-header>Discos</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down">Discos</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="disk_show">
               <disk-information></disk-information>
@@ -32,7 +32,7 @@
         </v-expansion-panel>
 
         <v-expansion-panel >
-          <v-expansion-panel-header>Gráficos</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down">Gráficos</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="graphics_show">
               <graphics-information></graphics-information>
@@ -41,7 +41,7 @@
         </v-expansion-panel>
 
         <v-expansion-panel >
-          <v-expansion-panel-header>Redes</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down">Redes</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="network_show">
               <network-information></network-information>
@@ -50,7 +50,7 @@
         </v-expansion-panel>
 
         <v-expansion-panel >
-          <v-expansion-panel-header>Sistemas Operativos</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down">Sistemas Operativos</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="os_show">
               <os-information></os-information>
@@ -59,7 +59,7 @@
         </v-expansion-panel>
 
         <v-expansion-panel >
-          <v-expansion-panel-header>Información de Sistema</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down">Información de Sistema</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="system_show">
               <system-information></system-information>
@@ -68,7 +68,7 @@
         </v-expansion-panel>
 
         <v-expansion-panel >
-          <v-expansion-panel-header>Programas Instalados</v-expansion-panel-header>
+          <v-expansion-panel-header expand-icon="mdi-menu-down">Programas Instalados</v-expansion-panel-header>
           <v-expansion-panel-content>
             <div v-if="program_show">
               <program-information></program-information>
@@ -77,7 +77,7 @@
         </v-expansion-panel>
 
       </v-expansion-panels>
-    </v-row>        
+    </v-row>
     <div v-if="false">
       <h1>Data</h1>
       <pre>{{ data}}</pre>

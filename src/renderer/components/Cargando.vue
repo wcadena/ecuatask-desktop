@@ -1,6 +1,11 @@
 <template>
-<div>
-    <h1>Cargando... </h1>
+<div class="align-center">
+    <v-card class="justify-center align-center">
+        <h1><v-progress-circular
+                indeterminate
+                color="primary"
+        ></v-progress-circular>Cargando</h1>
+    </v-card>
 </div>
 </template>
 
