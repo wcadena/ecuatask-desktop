@@ -19,15 +19,22 @@ const DefaultLayout = () => import('./layouts/default-layout')
 Vue.component('default-layout', DefaultLayout)
 Vue.config.productionTip = false
 Vue.use(Vuetify)
+var EventBus = new Vue()
 
 /* eslint-disable no-new */
 new Vue({
   components: { App },
+  methods: {
+    cargar: function () {
+      EventBus.$emit('cargar')
+    }
+  },
   router,
   store,
   template: '<App/>'
 }).$mount('#app')
 
 window.newItem = () => {
+  EventBus.$emit('cargar')
   console.log('Nuevo Item...')
 }

@@ -97,9 +97,17 @@
   import SystemInformation from '../pages/system'
   import ProgramInformation from '../pages/programas'
   import AuthService from '../oauth/AuthService'
+  import Vue from 'vue'
+
   require('../electron/menu')
+  var EventBus = new Vue()
 
   export default {
+    created: function () {
+      EventBus.$on('cargar', function () {
+        console.log('cargar todo!!!')
+      })
+    },
     mounted () {
       const auth = new AuthService()
       // console.log(auth, auth.isAuthenticated(), auth.authenticated)

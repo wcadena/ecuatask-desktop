@@ -14,7 +14,7 @@ const template = [
       }, {
         label: 'Add New 2',
         click: () => { window.newItem() },
-        accelerator: 'CmdOrCtrl+O'
+        accelerator: 'CmdOrCtrl+I'
       }
     ]
   },
