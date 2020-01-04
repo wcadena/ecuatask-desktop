@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 const windowStateKeeper = require('electron-window-state')
 
 /**
@@ -68,6 +68,10 @@ app.on('activate', () => {
  * support auto updating. Code Signing with a valid certificate is required.
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-electron-builder.html#auto-updating
  */
+ipcMain.on('ping', (event, arg) => {
+  console.log(`se recibio ping - ${arg}`)
+  event.sender.send('pong', new Date())
+})
 
 /*
 import { autoUpdater } from 'electron-updater'

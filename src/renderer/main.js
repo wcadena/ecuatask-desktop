@@ -5,6 +5,7 @@ import Vuetify from 'vuetify'
 import App from './App'
 import router from './router'
 import store from './store'
+import {setIpc, sendIpc} from './lib/ipcRendererEvent'
 
 // include all css files
 import './lib/VuelyCss'
@@ -29,6 +30,10 @@ new Vue({
       EventBus.$emit('cargar')
     }
   },
+  mounted () {
+    console.log('montando1111111111111111111111111111111111')
+    setIpc()
+  },
   router,
   store,
   template: '<App/>'
@@ -36,5 +41,6 @@ new Vue({
 
 window.newItem = () => {
   EventBus.$emit('cargar')
-  console.log('Nuevo Item...')
+  sendIpc()
+  console.log('Nuevo Item... sendIpc')
 }
