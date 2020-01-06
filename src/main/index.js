@@ -1,6 +1,7 @@
 'use strict'
 
-import { app, BrowserWindow, ipcMain } from 'electron'
+import { app, BrowserWindow, ipcMain, dialog } from 'electron'
+// import cargaErrors from '../renderer/lib/cargaErrores'
 const windowStateKeeper = require('electron-window-state')
 
 /**
@@ -16,6 +17,33 @@ const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
+function relaunch (win) {
+  dialog.showMessageBox(win, {
+    type: 'error',
+    title: '.-Ecuatask-Desktop-.',
+    message: 'Ocurrio un error inesperado, se reiniciara el aplicativo'
+  }, () => {
+    app.relaunch()
+    app.exit(0)
+  })
+}
+
+function setupErrors (win) {
+  win.webContents.on('crashed', () => {
+    relaunch(win)
+  })
+  win.on('unresponsive', () => {
+    dialog.showMessageBox(win, {
+      type: 'warning',
+      title: '.-Ecuatask-Desktop-.',
+      message: 'Un proceso esta tomando mucho tiempo, puede esperar o reiniciar el aplicativo manualmente.'
+    })
+  })
+  process.on('uncaughtException', (err) => {
+    console.log(err)
+    relaunch(win)
+  })
+}
 function createWindow () {
   /**
    * Win state keeper
@@ -23,7 +51,6 @@ function createWindow () {
   let state = windowStateKeeper({
     defaultWidth: 500, defaultHeight: 650
   })
-
   /**
    * Initial window options
    */
@@ -39,10 +66,11 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-
+  // cargaErrors(mainWindow)
+  setupErrors(mainWindow)
   mainWindow.loadURL(winURL)
-
   mainWindow.on('closed', () => {
+    console.log('Hasta luego... cerrando')
     mainWindow = null
   })
 }

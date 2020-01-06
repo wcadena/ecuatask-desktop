@@ -97,7 +97,6 @@
         const auth = new AuthService()
         console.log(this.usuarioxci1)
         auth.login(this.equipoxci1)
-        this.seinstaloOk = auth.getequiponumeroserie(this.equipoxci1)
         console.log(this.dataInstalacion.length)
         console.log(this.dataInstalacion)
         if (this.dataInstalacion && this.dataInstalacion.length > 1) {
