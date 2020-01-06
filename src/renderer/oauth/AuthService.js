@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { AUTH_CONFIG } from './auth0-variables'
 import EventEmitter from 'eventemitter3'
-// import router from '../router'
 import { store } from '../store/modules/auth'
+const settings = require('electron-settings')
+// import router from '../router'
 
 class AuthService {
   constructor () {
@@ -15,6 +16,11 @@ class AuthService {
   }
   getequiponumeroserie (equipo, accesToken1) {
     console.log(equipo + '-------------------------------------------------------------------------------------------------------------->')
+    settings.set('equipo', {
+      nombre: equipo,
+      last: 'Kramer'
+    })
+    localStorage.setItem('equipo3', equipo)
     console.log(accesToken1 + '-------------------------------------------------------------------------------------------------------------->')
     // const accessToken = JSON.parse(localStorage.getItem('access_token'))
     let urll = AUTH_CONFIG.apibase + '/api/equipo_no_serie' + '?no_serie=' + equipo
@@ -27,32 +33,16 @@ class AuthService {
       }
     )
       .then(resp => {
-        console.log('*************************************************************************************************')
-        console.log('*************************************************************************************************')
-        console.log('*************************************************************************************************')
         console.log(resp.data)
+        localStorage.setItem('equipo_data1', JSON.stringify(resp.data))
+        alert('Equipo consultado con esxito.')
       })
       .then(response => {
-        console.log('-------------------------------------------------------------------------------------------------')
-        console.log('-------------------------------------------------------------------------------------------------')
-        console.log('-------------------------------------------------------------------------------------------------')
-        localStorage.setItem('equipo_data', JSON.stringify(response))
         return response
       }).catch(e => {
-        console.log('-------------------------------------------------------------------------------------------------')
-        console.log('-------------------------------------------------------------------------------------------------')
-        console.log('-------------------------------------------------------------------------------------------------')
         console.log(e)
         return false
-      }).finally(r => {
-        console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
-        console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
-        console.log('vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
-        console.log(r)
       })
-    console.log('/////////////////////////////////////////////////////////////////////////////////////////////////////')
-    console.log('/////////////////////////////////////////////////////////////////////////////////////////////////////')
-    console.log('/////////////////////////////////////////////////////////////////////////////////////////////////////')
   }
   login (equipoxci1) {
     // https://github.com/wcadena/inventarioAppDesktopJava/blob/63f388fac1830563a51a0c2b2159378c064c273c/src/main/java/utils/ConectarRestfull.java
@@ -120,7 +110,8 @@ class AuthService {
     localStorage.setItem('refresh_token', authResult.refreshToken)
     localStorage.setItem('id_token', authResult.idToken)
     localStorage.setItem('expires_in', expiresAt)
-    localStorage.setItem('equipo', JSON.stringify(authResult.equipo))
+    console.log(authResult)
+    // localStorage.setItem('equipo', JSON.stringify(authResult.equipo))
     this.authNotifier.emit('authChange', { authenticated: true })
   }
 

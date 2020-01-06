@@ -12,7 +12,7 @@ const template = [
         click: window.newItem,
         accelerator: 'CmdOrCtrl+O'
       }, {
-        label: 'Add New 2',
+        label: 'Consultar Equipo',
         click: () => { window.newItem() },
         accelerator: 'CmdOrCtrl+I'
       }
