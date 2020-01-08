@@ -44,3 +44,6 @@ window.newItem = () => {
   sendIpc()
   console.log('Nuevo Item... sendIpc')
 }
+window.actualizarensitio = () => {
+  console.log('Nuevo actualizarensitio')
+}

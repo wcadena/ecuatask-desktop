@@ -20,6 +20,7 @@ class AuthService {
       nombre: equipo,
       last: 'Kramer'
     })
+    console.log(settings.file())
     localStorage.setItem('equipo3', equipo)
     console.log(accesToken1 + '-------------------------------------------------------------------------------------------------------------->')
     // const accessToken = JSON.parse(localStorage.getItem('access_token'))
