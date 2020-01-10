@@ -9,10 +9,16 @@ const template = [
     label: 'Equipo',
     submenu: [
       {
-        label: 'Actualizar Informacion en sitio',
+        label: 'Actualizar Equipo',
+        click: () => { window.actualizarequipo() },
+        accelerator: 'CmdOrCtrl+E'
+      },
+      {
+        label: 'Actualizar Aplicaciones',
         click: () => { window.actualizarensitio() },
         accelerator: 'CmdOrCtrl+O'
-      }, {
+      },
+      {
         label: 'Consultar Equipo',
         click: () => { window.newItem() },
         accelerator: 'CmdOrCtrl+I'
@@ -84,7 +90,8 @@ const template = [
     submenu: [
       {
         label: 'Aplicación',
-        click: () => { shell.openExternal('https://devinventario.ecuatask.com/') }
+        click: () => { shell.openExternal('https://devinventario.ecuatask.com/') },
+        accelerator: 'CmdOrCtrl+H'
       }
     ]
   }

@@ -51,3 +51,8 @@ window.actualizarensitio = () => {
   const cloclc = new CheckListOpcionesCheckList()
   cloclc.getequiponumeroserie(equipodata.data.check_list_id, '64', 'CPU', 64, 'xxxxxx')
 }
+window.actualizarequipo = () => {
+  console.log('Nuevo Equipo')
+  var equipocpu = store.state.data.cpu
+  console.log(equipocpu)
+}
