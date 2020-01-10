@@ -8,5 +8,13 @@ export const AUTH_CONFIG = {
   grantType: 'password',
   username: 'admin@admin.com',
   password: 'password',
-  scope: '*'
+  scope: '*',
+  CPU: 64,
+  BATERIA: 65,
+  DISCOS: 66,
+  GRAFICOS: 67,
+  REDES: 68,
+  SISTEMAS_OPERATIVOS: 69,
+  INFORMACION_DEL_SISTEMA: 70,
+  PROGRAMAS_INSTALADOS: 71
 }
