@@ -47,7 +47,7 @@ window.newItem = () => {
 }
 window.actualizarensitio = () => {
   console.log('Nuevo actualizarensitio')
-  var equipodata = JSON.parse(localStorage.getItem('equipo_data1'))
+  var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
   const cloclc = new CheckListOpcionesCheckList()
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, 'text', 'CPU', 64, 'xxxxxx')
+  cloclc.getequiponumeroserie(equipodata.data.check_list_id, '64', 'CPU', 64, 'xxxxxx')
 }

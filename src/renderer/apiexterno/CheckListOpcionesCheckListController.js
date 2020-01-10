@@ -2,7 +2,7 @@ import axios from 'axios'
 import { AUTH_CONFIG } from '../oauth/auth0-variables'
 
 class CheckListOpcionesCheckListController {
-  getequiponumeroserie (checklistid, opcioneschecklistid, tipo, atributo, valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8, valor9, valor10) {
+  getequiponumeroserie (checklistid, opcioneschecklistid, valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8, valor9, valor10) {
     let urll = AUTH_CONFIG.apibase + '/api/check_list__opciones_check_lists' + ''
     console.log(urll)
     var accesToken1 = localStorage.getItem('access_token')
@@ -25,9 +25,7 @@ class CheckListOpcionesCheckListController {
       valor7: valor7,
       valor8: valor8,
       valor9: valor9,
-      valor10: valor10,
-      tipo: tipo,
-      atributo: atributo
+      valor10: valor10
     }
     axios.post(urll,
       bodyParameters,
