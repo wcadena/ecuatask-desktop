@@ -36,7 +36,7 @@ class AuthService {
       .then(resp => {
         var aunftada = JSON.stringify(resp.data)
         localStorage.setItem('equipodatax1', aunftada)
-        alert('Equipo consultado con esxito.')
+        alert('El equipo se ha consultado con éxito.')
       })
       .then(response => {
         return response
