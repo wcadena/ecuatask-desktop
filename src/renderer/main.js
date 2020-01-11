@@ -7,10 +7,10 @@ import router from './router'
 import store from './store'
 import CheckListOpcionesCheckList from './apiexterno/CheckListOpcionesCheckListController'
 import {setIpc, sendIpc} from './lib/ipcRendererEvent'
-import { AUTH_CONFIG } from './oauth/auth0-variables'
 
 // include all css files
 import './lib/VuelyCss'
+import ConsultaYsube from './lib/consultaYsubeAlApi'
 // require('./assets/js/app')
 // require('./assets/js/dashmix/app')
 
@@ -53,16 +53,7 @@ window.actualizarensitio = () => {
   cloclc.getequiponumeroserie(equipodata.data.check_list_id, '64', 'CPU', 64, 'xxxxxx')
 }
 window.actualizarequipo = () => {
-  console.log('Nuevo Equipo')
-  var equipocpu = store.state.data.cpu
-  var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
-  const cloclc = new CheckListOpcionesCheckList()
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.brand, 'Brand')
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.cores, 'Cores')
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.manufacturer, 'Manufacturer')
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.model, 'Model')
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.revision, 'Revision')
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.speed, 'Speed')
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.speedmin, 'Speed Min')
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, AUTH_CONFIG.CPU, equipocpu.speedmax, 'Speed Max')
+  const cys = new ConsultaYsube()
+  cys.consultaCpu()
+  cys.consultaBatery()
 }
