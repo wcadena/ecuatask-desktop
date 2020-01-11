@@ -42,11 +42,31 @@ class ConsultaYsube {
     }
   }
   consultaGraficos () {
-    var equipoBateri = store.state.data.battery
-    var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
     const cloclc = new CheckListOpcionesCheckList()
+    var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
     var cheklisttt = AUTH_CONFIG.GRAFICOS
-    cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipoBateri.ischarging, 'Charging')
+    // tarjeta
+    var tarjetfg = store.state.data.graphics.controllers
+    var tarjetPorte = tarjetfg.length
+    for (let i = 0; i < tarjetPorte; i++) {
+      let diskname = tarjetfg[i].model
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, tarjetfg[i].model, 'Model', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, tarjetfg[i].vendor, 'Vendor', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, tarjetfg[i].vram, 'VRAM', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, tarjetfg[i].vramDynamic, 'VRAM Dynamic', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, tarjetfg[i].bus, 'Bus', i, diskname)
+    }
+    // monitor
+    var pantalls = store.state.data.graphics.displays
+    var pantallscantidad = pantalls.length
+    for (let i = 0; i < pantallscantidad; i++) {
+      let diskname = pantalls[i].model
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, pantalls[i].model, 'Model', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, pantalls[i].main, 'Main', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, pantalls[i].resolutionx, 'Resolution X', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, pantalls[i].resolutiony, 'Resolution Y', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, pantalls[i].pixeldepth, 'Pixel Depth', i, diskname)
+    }
   }
   consultaRedes () {
     var equipoBateri = store.state.data.battery

@@ -59,4 +59,5 @@ window.actualizarequipo = () => {
   cys.consultaSO()
   cys.consultaSistemImformation()
   cys.consultaDiscos()
+  cys.consultaGraficos()
 }

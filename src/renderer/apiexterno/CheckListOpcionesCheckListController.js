@@ -32,10 +32,10 @@ class CheckListOpcionesCheckListController {
       config
     )
       .then(resp => {
-        console.log(resp)
+        // console.log(resp)
       })
       .then(response => {
-        console.log(response)
+        // console.log(response)
         return response
       }).catch(e => {
         console.log(e)
