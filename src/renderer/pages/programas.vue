@@ -26,7 +26,7 @@
         try {
           return [
             {
-              name: this.$store.state.prrogra[num].name,
+              name: '[' + (num + 1) + ']' + this.$store.state.prrogra[num].name,
               value: this.$store.state.prrogra[num].version,
               img: require('@/static/os/release.svg')
             }

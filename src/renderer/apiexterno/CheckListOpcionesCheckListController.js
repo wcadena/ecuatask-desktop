@@ -46,6 +46,12 @@ class CheckListOpcionesCheckListController {
         if (e.response.status === 422) {
           alert(JSON.stringify(e.response.data.error))
         }
+        if (e.response.status === 502) {
+          setTimeout(function () {
+            const cloclc = new CheckListOpcionesCheckListController()
+            cloclc.getequiponumeroserie(checklistid, opcioneschecklistid, valor1, valor2, valor3, valor4, valor5, valor6, valor7, valor8, valor9, valor10)
+          }, 5000)
+        }
         return false
       })
   }

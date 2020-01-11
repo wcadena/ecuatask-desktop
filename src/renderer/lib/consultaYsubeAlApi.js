@@ -102,11 +102,20 @@ class ConsultaYsube {
     cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipoSys.system.uuid, 'System UUID')
   }
   consultaProgramas () {
-    var equipoBateri = store.state.data.battery
-    var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
     const cloclc = new CheckListOpcionesCheckList()
-    var cheklisttt = AUTH_CONFIG.PROGRAMAS_INSTALADOS
-    cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipoBateri.ischarging, 'IsCharging')
+    var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
+    var cheklisttt = AUTH_CONFIG.PROGRAMAS_INSTALADOS // 71
+    var progr1 = store.state.prrogra
+    if (progr1) {
+      let cantidprogra = progr1.length
+      for (let i = 0; i < cantidprogra; i++) {
+        setTimeout(function () {
+          cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, progr1[i].name, progr1[i].version)
+        }, 1000)
+      }
+    } else {
+      alert('Aun no carga los programas.')
+    }
   }
 }
 

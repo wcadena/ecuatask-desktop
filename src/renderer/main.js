@@ -5,7 +5,6 @@ import Vuetify from 'vuetify'
 import App from './App'
 import router from './router'
 import store from './store'
-import CheckListOpcionesCheckList from './apiexterno/CheckListOpcionesCheckListController'
 import {setIpc, sendIpc} from './lib/ipcRendererEvent'
 
 // include all css files
@@ -47,10 +46,8 @@ window.newItem = () => {
   console.log('Nuevo Item... sendIpc')
 }
 window.actualizarensitio = () => {
-  console.log('Nuevo actualizarensitio')
-  var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
-  const cloclc = new CheckListOpcionesCheckList()
-  cloclc.getequiponumeroserie(equipodata.data.check_list_id, '64', 'CPU', 64, 'xxxxxx')
+  const cys = new ConsultaYsube()
+  cys.consultaProgramas()
 }
 window.actualizarequipo = () => {
   const cys = new ConsultaYsube()
