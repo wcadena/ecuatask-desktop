@@ -56,4 +56,6 @@ window.actualizarequipo = () => {
   const cys = new ConsultaYsube()
   cys.consultaCpu()
   cys.consultaBatery()
+  cys.consultaSO()
+  cys.consultaSistemImformation()
 }
