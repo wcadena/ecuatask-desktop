@@ -27,11 +27,19 @@ class ConsultaYsube {
     cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipoBateri.percent, 'Percent')
   }
   consultaDiscos () {
-    var equipoBateri = store.state.data.battery
+    var equipodisk = store.state.data.diskLayout
+    var equipodiskcantidd = store.state.data.diskLayout.length
     var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
     const cloclc = new CheckListOpcionesCheckList()
     var cheklisttt = AUTH_CONFIG.DISCOS
-    cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipoBateri.ischarging, 'Charging')
+    for (var i = 0; i < equipodiskcantidd; i++) {
+      var diskname = store.state.data.diskLayout[i].name
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipodisk[i].name, 'Name', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipodisk[i].type, 'Type', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipodisk[i].firmwareRevision, 'Firmware Revision', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipodisk[i].serialNum, 'Serial Num', i, diskname)
+      cloclc.getequiponumeroserie(equipodata.data.check_list_id, cheklisttt, equipodisk[i].size / 1000000000, 'Size', i, diskname, 'GB')
+    }
   }
   consultaGraficos () {
     var equipoBateri = store.state.data.battery

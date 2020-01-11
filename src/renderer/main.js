@@ -58,4 +58,5 @@ window.actualizarequipo = () => {
   cys.consultaBatery()
   cys.consultaSO()
   cys.consultaSistemImformation()
+  cys.consultaDiscos()
 }
