@@ -55,6 +55,46 @@ class CheckListOpcionesCheckListController {
         return false
       })
   }
+  borrarOpcionCheclist (checklistid, opcioneschecklistid) {
+    let urll = AUTH_CONFIG.apibase + '/api/check_list__opciones_check_lists_delete' + ''
+    var accesToken1 = localStorage.getItem('access_token')
+    var config = {
+      headers: {
+        Authorization: 'Bearer ' + '' + accesToken1
+      }
+    }
+    var bodyParameters = {
+      check_list_id: checklistid,
+      opciones_check_list_id: opcioneschecklistid
+    }
+    axios.post(urll,
+      bodyParameters,
+      config
+    )
+      .then(resp => {
+        // console.log(resp)
+      })
+      .then(response => {
+        // console.log(response)
+        return response
+      }).catch(e => {
+        console.log(e)
+        console.log(e.response)
+        if (e.response.status === 401) {
+          alert(JSON.stringify(e.response.data.error))
+        }
+        if (e.response.status === 422) {
+          alert(JSON.stringify(e.response.data.error))
+        }
+        if (e.response.status === 502) {
+          setTimeout(function () {
+            const cloclc = new CheckListOpcionesCheckListController()
+            cloclc.borrarOpcionCheclist(checklistid, opcioneschecklistid)
+          }, 4000)
+        }
+        return false
+      })
+  }
 }
 
 export default CheckListOpcionesCheckListController

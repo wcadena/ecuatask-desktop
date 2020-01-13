@@ -10,6 +10,8 @@ import {setIpc, sendIpc} from './lib/ipcRendererEvent'
 // include all css files
 import './lib/VuelyCss'
 import ConsultaYsube from './lib/consultaYsubeAlApi'
+import CheckListOpcionesCheckList from './apiexterno/CheckListOpcionesCheckListController'
+import {AUTH_CONFIG} from './oauth/auth0-variables'
 // require('./assets/js/app')
 // require('./assets/js/dashmix/app')
 
@@ -46,11 +48,19 @@ window.newItem = () => {
   console.log('Nuevo Item... sendIpc')
 }
 window.actualizarensitio = () => {
+  new CheckListOpcionesCheckList().borrarOpcionCheclist(JSON.parse(localStorage.getItem('equipodatax1')).data.check_list_id, AUTH_CONFIG.SISTEMAS_OPERATIVOS)
   const cys = new ConsultaYsube()
   cys.consultaProgramas()
 }
 window.actualizarequipo = () => {
   const cys = new ConsultaYsube()
+  let checklistid = JSON.parse(localStorage.getItem('equipodatax1')).data.check_list_id
+  new CheckListOpcionesCheckList().borrarOpcionCheclist(checklistid, AUTH_CONFIG.CPU)
+  new CheckListOpcionesCheckList().borrarOpcionCheclist(checklistid, AUTH_CONFIG.BATERIA)
+  new CheckListOpcionesCheckList().borrarOpcionCheclist(checklistid, AUTH_CONFIG.SISTEMAS_OPERATIVOS)
+  new CheckListOpcionesCheckList().borrarOpcionCheclist(checklistid, AUTH_CONFIG.INFORMACION_DEL_SISTEMA)
+  new CheckListOpcionesCheckList().borrarOpcionCheclist(checklistid, AUTH_CONFIG.DISCOS)
+  new CheckListOpcionesCheckList().borrarOpcionCheclist(checklistid, AUTH_CONFIG.GRAFICOS)
   cys.consultaCpu()
   cys.consultaBatery()
   cys.consultaSO()
