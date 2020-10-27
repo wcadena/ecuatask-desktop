@@ -72,7 +72,7 @@
     "popper.js": "^1.16.0",
     "proglistr": "^1.4.0",
     "simplebar": "^5.0.7",
-    "systeminformation": "^4.16.0",
+    "systeminformation": "^4.27.11",
     "vue": "^2.6.10",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.1.3",
