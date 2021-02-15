@@ -1,20 +1,14 @@
 <template>
-<div class="align-center">
-    <v-card class="justify-center align-center">
-        <h1><v-progress-circular
-                indeterminate
-                color="primary"
-        ></v-progress-circular>Cargando</h1>
-    </v-card>
-</div>
+  <div>
+    <div class="loader-overlay" v-if="status">
+      <v-progress-circular indeterminate color="primary"></v-progress-circular>
+      <h1>Cargando</h1>
+    </div>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'Cargando'
-  }
+export default {
+  props: ['status']
+}
 </script>
-
-<style scoped>
-
-</style>

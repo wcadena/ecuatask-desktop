@@ -1,9 +1,10 @@
 import axios from 'axios'
+//import auth0 from 'auth0-js'
 import { AUTH_CONFIG } from './auth0-variables'
 import EventEmitter from 'eventemitter3'
 import { store } from '../store/modules/auth'
 const settings = require('electron-settings')
-// import router from '../router'
+import router from '../router'
 
 class AuthService {
   constructor () {
@@ -21,6 +22,7 @@ class AuthService {
       last: 'Kramer'
     })
     console.log(settings.file())
+    console.log('Comiensa consulta de API')
     localStorage.setItem('equipo3', equipo)
     console.log(accesToken1 + '-------------------------------------------------------------------------------------------------------------->')
     // const accessToken = JSON.parse(localStorage.getItem('access_token'))
@@ -39,6 +41,7 @@ class AuthService {
         alert('El equipo se ha consultado con éxito.')
       })
       .then(response => {
+        console.log('Respuesta de Api')
         return response
       }).catch(e => {
         console.log(e)
@@ -76,7 +79,7 @@ class AuthService {
       })
       .catch(error => {
         if (error) {
-          // router.replace('/')
+          router.replace('/')
           console.log(error)
           alert(`Error: ${error}. Check the console for further details.`)
           return false
@@ -92,7 +95,7 @@ class AuthService {
         // router.replace('/default/dashboard/ecommerce')
         return true
       } else if (err) {
-        // router.replace('/')
+        router.replace('/')
         console.log(err)
         alert(`Error: ${err.error}. Check the console for further details.`)
         return false

@@ -8,7 +8,7 @@
       </div>
   </div>
   <div v-else>
-    <cargando></cargando>
+    <cargando status="Cargando"></cargando>
   </div>
 </template>
 

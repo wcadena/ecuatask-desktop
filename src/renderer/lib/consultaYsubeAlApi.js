@@ -4,6 +4,7 @@ import CheckListOpcionesCheckList from '../apiexterno/CheckListOpcionesCheckList
 
 class ConsultaYsube {
   consultaCpu () {
+    alert('Aun no carga los programas.')
     var equipocpu = store.state.data.cpu
     var equipodata = JSON.parse(localStorage.getItem('equipodatax1'))
     const cloclc = new CheckListOpcionesCheckList()

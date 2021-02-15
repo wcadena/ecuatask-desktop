@@ -1,6 +1,6 @@
 <template>
   <v-list two-line>
-    <template v-for="item in data">
+    <div v-for="item in data" v-bind:key="item.name">
       <v-divider></v-divider>
       <v-list-item>
         <v-list-item-avatar v-if="item.img">
@@ -11,7 +11,7 @@
           <v-list-item-subtitle>{{item.value}} {{(item.unit) ? item.unit : ''}}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
-    </template>
+    </div>
   </v-list>
 </template>
 
@@ -21,5 +21,3 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
