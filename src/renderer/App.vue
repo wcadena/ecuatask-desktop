@@ -4,7 +4,7 @@
       <router-view  :auth="auth" :authenticated="authenticated"></router-view>
     </div>
     <div v-else>
-      <cargando></cargando>
+      <cargando status="cargando"></cargando>
     </div>
   </div>
 </template>

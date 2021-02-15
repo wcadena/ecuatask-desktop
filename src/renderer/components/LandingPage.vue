@@ -3,6 +3,7 @@
     <instalacio></instalacio>
   </div>
   <div v-else>
+    <projects></projects>
     <lista-opciones></lista-opciones>
   </div>
 </template>
