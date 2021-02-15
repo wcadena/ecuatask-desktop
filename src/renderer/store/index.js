@@ -32,10 +32,14 @@ export default new Vuex.Store({
       let data
       let prrogra
       try {
+        var datasi = JSON.parse(localStorage.getItem('setPrrogra_disk'))
+        commit('setPrrogra', datasi)
         data = await si.getAllData()
         prrogra = await progra
         prrogra.getProgs().then(data => data.forEach(program => { console.log(program) }))
         prrogra.getProgs().then(data => {
+          localStorage.removeItem('setPrrogra_disk')
+          localStorage.setItem('setPrrogra_disk', JSON.stringify(data))
           commit('setPrrogra', data)
         })
       } catch (e) {
