@@ -31,9 +31,6 @@ class CheckListOpcionesCheckListController {
       bodyParameters,
       config
     )
-      .then(resp => {
-        // console.log(resp)
-      })
       .then(response => {
         // console.log(response)
         return response
@@ -71,9 +68,6 @@ class CheckListOpcionesCheckListController {
       bodyParameters,
       config
     )
-      .then(resp => {
-        // console.log(resp)
-      })
       .then(response => {
         // console.log(response)
         return response

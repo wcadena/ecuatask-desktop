@@ -80,8 +80,8 @@
                 </div>
             </div>
         </div>
-        <!--<pre>{{ data}}</pre>
-        <pre>{{ usert[0].usuario}}</pre>-->
+        <pre>{{ data}}</pre>
+        <pre>{{ usert[0].usuario}}</pre>
     </div>
 
 </template>
@@ -93,7 +93,7 @@
     name: 'instalacio',
     components: { SystemzInformation },
     methods: {
-      guardarenhd (event) {
+      guardarenhd () {
         const auth = new AuthService()
         console.log(this.usuarioxci1)
         auth.login(this.equipoxci1)

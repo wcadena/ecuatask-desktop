@@ -16,6 +16,8 @@ import 'vuetify/dist/vuetify.css'
 // nprogress
 import 'nprogress/nprogress.css'
 
+// animate css
+import '../assets/animate.css'
 // Icon Files
 // import 'weather-icons/css/weather-icons.min.css'
 // import '../assets/themify-icons/themify-icons.css'

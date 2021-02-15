@@ -12,6 +12,8 @@ import './lib/VuelyCss'
 import ConsultaYsube from './lib/consultaYsubeAlApi'
 import CheckListOpcionesCheckList from './apiexterno/CheckListOpcionesCheckListController'
 import {AUTH_CONFIG} from './oauth/auth0-variables'
+// global components
+import GlobalComponents from './globalComponent'
 // require('./assets/js/app')
 // require('./assets/js/dashmix/app')
 
@@ -23,6 +25,7 @@ const DefaultLayout = () => import('./layouts/default-layout')
 Vue.component('default-layout', DefaultLayout)
 Vue.config.productionTip = false
 Vue.use(Vuetify)
+Vue.use(GlobalComponents)
 var EventBus = new Vue()
 
 /* eslint-disable no-new */
