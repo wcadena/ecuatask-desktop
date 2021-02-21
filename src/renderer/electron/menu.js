@@ -9,6 +9,11 @@ const template = [
     label: 'Equipo',
     submenu: [
       {
+        label: 'Sincronizar Equipo',
+        click: () => { window.sincronizarequipofile() },
+        accelerator: 'CmdOrCtrl+L'
+      },
+      {
         label: 'Actualizar Equipo',
         click: () => { window.actualizarequipo() },
         accelerator: 'CmdOrCtrl+E'

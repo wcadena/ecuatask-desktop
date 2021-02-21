@@ -5,6 +5,7 @@ import EventEmitter from 'eventemitter3'
 import { store } from '../store/modules/auth'
 const settings = require('electron-settings')
 import router from '../router'
+import qs from 'qs'
 
 class AuthService {
   constructor () {
@@ -50,16 +51,28 @@ class AuthService {
   }
   login (equipoxci1) {
     // https://github.com/wcadena/inventarioAppDesktopJava/blob/63f388fac1830563a51a0c2b2159378c064c273c/src/main/java/utils/ConectarRestfull.java
-    axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-    axios.post(AUTH_CONFIG.domain, {
-      client_id: AUTH_CONFIG.clientId,
-      client_secret: AUTH_CONFIG.clientSecret,
-      grant_type: AUTH_CONFIG.grantType,
-      username: AUTH_CONFIG.username,
-      password: AUTH_CONFIG.password,
-      scope: AUTH_CONFIG.scope
-    })
-      .then(response => {
+    
+    //axios.defaults.proxy.host = '127.0.0.1'
+    //axios.defaults.proxy.port = 8080
+    //JSON.stringify(
+      
+      const data = {
+        grant_type: AUTH_CONFIG.grantType,
+        client_id: AUTH_CONFIG.clientId,
+        client_secret: AUTH_CONFIG.clientSecret,      
+        username: AUTH_CONFIG.username,
+        password: AUTH_CONFIG.password,
+        scope: AUTH_CONFIG.scope
+      };
+      const options2 = {
+        method: 'POST',
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        data: qs.stringify(data),
+        url: AUTH_CONFIG.domain,
+        baseURL: AUTH_CONFIG.domain
+      };
+      
+      axios(options2).then(response => {
         const rs = response.data
         const authResult = {
           accessToken: rs.access_token,
@@ -67,7 +80,6 @@ class AuthService {
           expiresIn: rs.expires_in,
           refreshToken: rs.refresh_token
         }
-
         this.access_token = response.data.access_token
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.getequiponumeroserie(equipoxci1, rs.access_token)
@@ -78,6 +90,7 @@ class AuthService {
         }
       })
       .catch(error => {
+        console.log(error)
         if (error) {
           router.replace('/')
           console.log(error)

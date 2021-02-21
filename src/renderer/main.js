@@ -103,6 +103,7 @@ import './lib/VuelyCss'
 import ConsultaYsube from './lib/consultaYsubeAlApi'
 import CheckListOpcionesCheckList from './apiexterno/CheckListOpcionesCheckListController'
 import {AUTH_CONFIG} from './oauth/auth0-variables'
+import CheckListOpcionesCheckListController from './apiexterno/CheckListOpcionesCheckListController';
 // require('./assets/js/app')
 // require('./assets/js/dashmix/app')
 
@@ -140,6 +141,14 @@ window.newItem = () => {
   EventBus.$emit('cargar')
   sendIpc()
   console.log('Nuevo Item... sendIpc')
+}
+window.sincronizarequipofile = () => {
+  var valoraenviar = {
+    sistema:(store.state.data),
+    programas:(store.state.prrogra)
+  }
+  const cloclc = new CheckListOpcionesCheckListController()
+  cloclc.setequipofile(valoraenviar)
 }
 window.actualizarensitio = () => {
   new CheckListOpcionesCheckList().borrarOpcionCheclist(JSON.parse(localStorage.getItem('equipodatax1')).data.check_list_id, AUTH_CONFIG.SISTEMAS_OPERATIVOS)
