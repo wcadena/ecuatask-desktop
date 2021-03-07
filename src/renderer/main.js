@@ -147,8 +147,9 @@ window.sincronizarequipofile = () => {
     sistema:(store.state.data),
     programas:(store.state.prrogra)
   }
+
   const cloclc = new CheckListOpcionesCheckListController()
-  cloclc.setequipofile(valoraenviar)
+  cloclc.setequipofile(valoraenviar , localStorage.getItem('equipo3'))
 }
 window.actualizarensitio = () => {
   new CheckListOpcionesCheckList().borrarOpcionCheclist(JSON.parse(localStorage.getItem('equipodatax1')).data.check_list_id, AUTH_CONFIG.SISTEMAS_OPERATIVOS)

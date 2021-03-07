@@ -58,7 +58,7 @@ class CheckListOpcionesCheckListController {
         return false
       })
   }
-  setequipofile (file) {
+  setequipofile (file,no_serie) {
     var algorithm = 'sha256'
 
     var textToHash = JSON.stringify(file)
@@ -81,6 +81,7 @@ class CheckListOpcionesCheckListController {
         hash: hash2,
         tiposha: 'shasum2',
         uploadfile: buf.toString('base64'),
+        no_serie: no_serie
       };
 
       var options3 = {

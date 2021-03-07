@@ -31,8 +31,10 @@ class AuthService {
     console.log(urll)
     axios.get(urll,
       {
-        headers: {
-          Authorization: 'Bearer ' + '' + accesToken1 // 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImY3N2JhMGE3NzEzMDJkNWU4NzBmNDBhZWM4OWQyZGM5Y2MwN2MyOTdmYWE5N2ZiM2E5Yjc3YzE2MDQyNzY1OWNiOTRjN2U5OTBkNDdlMGJlIn0.eyJhdWQiOiIxIiwianRpIjoiZjc3YmEwYTc3MTMwMmQ1ZTg3MGY0MGFlYzg5ZDJkYzljYzA3YzI5N2ZhYTk3ZmIzYTliNzdjMTYwNDI3NjU5Y2I5NGM3ZTk5MGQ0N2UwYmUiLCJpYXQiOjE1NzgyNjcwODgsIm5iZiI6MTU3ODI2NzA4OCwiZXhwIjoxNTkxMjI3MDg3LCJzdWIiOiIxIiwic2NvcGVzIjpbIioiXX0.oWSp35NNJ4-UqUXzLwlzliNRAOPyKP9iasMpi510R-qHwXfLEj_QUsYNvOSkfg1KCCB-SF2DfpbtmIdOndCUz-lBleEn0p9wfMcCPhoXpn7Dtonawo1MSSw_9FMGiWWzyBqZjy6wsV0AW6P6rHLUgsy8hVpJJG2RvXofzsOyNVfVtgW9cAge7tjg1_nzoy1cM0XWJGKuRjU-PANYWY07GtMwLT_myWVPqqGS85f-p-ZJKRNsmMXJmX2-0M8t6XD2PKmRkQpLEaLEVlBnuWVbJlzrt7mO53dYNroWGj92ZlViYdwiiZE6ju5s5ywMJIWwMpN8J1jnKmBYNfg1X-3inc5dukmQz6-8dUbvsTyNMqyyJ81ZgM_ElUR_c-05WFBkcwxrQua5th7IYkylt-UUzIbmxENL2OjFh0xPZNddbOCVW7SK0keOkgIcEOQ92-wUbbziBRnc_I0SCFFuwn82L0Qd27AlOO-_qUwcqzAV6bSpVcoIXLRhzm3vWBULwM4YqrfmoMvu19T8PmNKtRRiySpZ4Gos_5JEuzuVbjbM33A3UXhe-PWO1pPorMdF1TU63zuFBQQN5_mw4xy2CYoLQ9itV2AbSsYwwfbLHV1WF_gOAeZgphDenEmVOfuOnz2rujCbzg1kroMAvxduefaPclKzpWTIKTxbgOJ055uEKmc'
+        headers: {          
+          'Access-Control-Allow-Origin': '*',
+          'Authorization': 'Bearer ' + '' + accesToken1 ,
+          'content-type': 'application/x-www-form-urlencoded'
         }
       }
     )
